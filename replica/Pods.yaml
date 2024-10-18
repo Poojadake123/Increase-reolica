@@ -17,8 +17,8 @@ spec:
         app: replica-increse
     spec:
       containers:
-      - name: nginx
-        image: replica-increse
+      - name: replica-increse
+        image: nginx
         ports:
         - containerPort: 80
 ---
