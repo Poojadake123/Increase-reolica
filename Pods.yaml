@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Replica-increse-deployment 
+  labels:
+    app: nginx               # Add a label for better identification
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: Replica-increse
+  template:
+    metadata:
+      labels:
+        app: Replica-increse
+    spec:
+      containers:
+      - name: nginx
+        image: Replica-increse
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: Replica-increse-service
+spec:
+  type: NodePort
+  selector:
+    app: Replica-increse
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30100    # NodePort range: 30000-32767
