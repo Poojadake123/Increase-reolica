@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx               # Add a label for better identification
 spec:
-  replicas: 2
+  replicas: 3
   strategy:
     type: Recreate
   selector:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: replica-increse
-        image: ubuntu22.04
+        image: manasitdk/ubuntu_images:ubuntu-apache24.04
         ports:
         - containerPort: 80
 ---
